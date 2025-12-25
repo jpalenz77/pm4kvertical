@@ -2,13 +2,13 @@
 # Package PM4K Vertical UI addon
 
 ADDON_NAME="script.pm4k.verticalui"
-VERSION=$(grep 'version=' addon.xml | head -1 | sed 's/.*version="\([^"]*\)".*/\1/')
+VERSION=$(python3 -c "import re; content=open('addon.xml').read(); print(re.search(r'<addon[^>]*version=\"([^\"]+)\"', content).group(1))")
 OUTPUT_ZIP="${ADDON_NAME}-${VERSION}.zip"
 
 echo "📦 Packaging ${ADDON_NAME} v${VERSION}..."
 
 # Clean previous builds
-rm -f ../${OUTPUT_ZIP}
+rm -f ../${ADDON_NAME}-*.zip
 rm -rf /tmp/${ADDON_NAME}
 
 # Copy addon to temp directory

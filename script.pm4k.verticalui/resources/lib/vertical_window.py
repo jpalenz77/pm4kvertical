@@ -6,9 +6,7 @@ Modern vertical navigation using PM4K's backend
 """
 
 from __future__ import absolute_import, unicode_literals
-import xbmc
-import xbmcgui
-import xbmcaddon
+from kodi_six import xbmc, xbmcgui, xbmcaddon
 
 # Import PM4K modules  
 from plexnet import plexapp

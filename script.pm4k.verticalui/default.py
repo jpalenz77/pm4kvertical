@@ -7,9 +7,8 @@ Adds vertical navigation interface to PlexMod
 
 from __future__ import absolute_import, unicode_literals
 import sys
-import xbmc
-import xbmcaddon
-import xbmcgui
+import os
+from kodi_six import xbmc, xbmcaddon, xbmcgui, xbmcvfs
 
 ADDON = xbmcaddon.Addon()
 ADDON_ID = ADDON.getAddonInfo('id')
@@ -41,13 +40,19 @@ def main():
         # Add PM4K lib to path
         pm4k_addon = xbmcaddon.Addon('script.plexmod')
         pm4k_path = pm4k_addon.getAddonInfo('path')
-        pm4k_lib = os.path.join(pm4k_path, 'lib')
+        try:
+            # Kodi 19+
+            pm4k_lib = os.path.join(xbmcvfs.translatePath(pm4k_path), 'lib')
+        except:
+            # Kodi 18
+            pm4k_lib = os.path.join(xbmc.translatePath(pm4k_path).decode('utf-8'), 'lib')
         if pm4k_lib not in sys.path:
             sys.path.insert(0, pm4k_lib)
         
         # Import PM4K modules
         import plexnet
         from plexnet import plexapp
+        from lib.windows import kodigui
         
         # Check if user is signed in
         if not plexapp.ACCOUNT or not plexapp.SERVERMANAGER.selectedServer:
