@@ -74,17 +74,38 @@ def show_first_run_dialog():
     """
     dialog_text = (
         "¡Bienvenido a Plex Vertical UI!\n\n"
-        "Para comenzar, necesitas configurar tu servidor Plex.\n\n"
-        "¿Quieres abrir la configuración ahora?"
+        "Para comenzar, necesitas configurar:\n"
+        "1. URL del servidor Plex (ej: http://192.168.1.100:32400)\n"
+        "2. Token de autenticación de Plex\n\n"
+        "¿Abrir configuración ahora?"
     )
     
     if xbmcgui.Dialog().yesno('Primera ejecución', dialog_text):
         ADDON.openSettings()
+        
+        # Verificar si ahora está configurado
+        server_url = ADDON.getSetting('plex_server')
+        token = ADDON.getSetting('plex_token')
+        
+        if not server_url or not token:
+            xbmcgui.Dialog().ok(
+                'Configuración incompleta',
+                'Necesitas configurar ambos campos:',
+                '• URL del servidor Plex',
+                '• Token de autenticación'
+            )
+        else:
+            xbmcgui.Dialog().ok(
+                '¡Configuración guardada!',
+                'Servidor: ' + server_url,
+                '',
+                'Vuelve a abrir el addon para comenzar.'
+            )
     else:
         xbmcgui.Dialog().ok(
             'Configuración requerida',
             'Puedes configurar el servidor más tarde desde:',
-            'Complementos > Mis complementos > Plex Vertical UI > Configurar'
+            'Complementos > Plex Vertical UI > Configurar'
         )
 
 if __name__ == '__main__':

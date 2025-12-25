@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="script.plexmod.verticalui"
        name="Plex Vertical UI - Standalone"
-       version="2.0.0"
+       version="2.0.1"
        provider-name="Moids">
     <requires>
         <import addon="xbmc.python" version="3.0.0"/>
@@ -21,6 +21,12 @@
         <disclaimer lang="es_ES">Cliente independiente de Plex. Úsalo bajo tu propio riesgo.</disclaimer>
         <license>GPL-2.0-only</license>
         <news>
+v2.0.1 (2025-12-25)
+- Improved first-run configuration dialog
+- Better feedback after settings configuration
+- Added CONFIGURACION.md guide with token instructions
+- Fixed configuration flow to verify both URL and token
+
 v2.0.0 (2025-12-25)
 - Complete standalone rewrite
 - Modern vertical navigation UI

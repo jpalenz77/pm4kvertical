@@ -2,7 +2,7 @@
 # Script para empaquetar el addon Plex Vertical UI v2.0.0
 
 ADDON_ID="script.plexmod.verticalui"
-VERSION="2.0.0"
+VERSION="2.0.1"
 ZIP_NAME="$ADDON_ID-$VERSION.zip"
 
 echo "================================================"
