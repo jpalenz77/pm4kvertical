@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<settings version="1">
+    <category label="32001">
+        <setting label="32010" type="text" id="plex_server" default="" option="urlencoded"/>
+        <setting label="32011" type="text" id="plex_token" default="" option="hidden"/>
+        <setting label="32012" type="action" action="RunScript($LOCALIZE[24036],script.plexmod.verticalui,discover_server)"/>
+    </category>
+    
+    <category label="32002">
+        <setting label="32020" type="slider" id="animation_speed" default="100" range="50,50,200" option="percent"/>
+        <setting label="32021" type="number" id="items_per_page" default="50" />
+        <setting label="32022" type="slider" id="sidebar_width" default="380" range="300,20,500"/>
+        <setting label="32023" type="bool" id="smooth_scrolling" default="true"/>
+        <setting label="32024" type="bool" id="auto_play_trailers" default="false"/>
+    </category>
+    
+    <category label="32003">
+        <setting label="32030" type="select" id="ui_theme" values="Dark|Light|Auto" default="Dark"/>
+        <setting label="32031" type="slider" id="background_opacity" default="85" range="50,5,100" option="percent"/>
+        <setting label="32032" type="bool" id="show_fanart" default="true"/>
+        <setting label="32033" type="bool" id="blur_background" default="true"/>
+        <setting label="32034" type="select" id="accent_color" values="Plex Gold|Blue|Red|Green|Purple" default="Plex Gold"/>
+    </category>
+    
+    <category label="32004">
+        <setting label="32040" type="bool" id="enable_debug" default="false"/>
+        <setting label="32041" type="number" id="connection_timeout" default="30"/>
+        <setting label="32042" type="bool" id="use_https" default="true"/>
+        <setting label="32043" type="bool" id="verify_ssl" default="false"/>
+        <setting label="32044" type="action" action="RunScript($LOCALIZE[24036],script.plexmod.verticalui,clear_cache)"/>
+    </category>
+</settings>

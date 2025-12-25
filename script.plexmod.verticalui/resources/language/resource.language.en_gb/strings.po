@@ -1,0 +1,91 @@
+# Addon Name
+msgid ""
+msgstr ""
+
+msgctxt "#32001"
+msgid "Server Configuration"
+msgstr "Server Configuration"
+
+msgctxt "#32002"
+msgid "Interface Settings"
+msgstr "Interface Settings"
+
+msgctxt "#32003"
+msgid "Visual Appearance"
+msgstr "Visual Appearance"
+
+msgctxt "#32004"
+msgid "Advanced Settings"
+msgstr "Advanced Settings"
+
+msgctxt "#32010"
+msgid "Plex Server URL"
+msgstr "Plex Server URL"
+
+msgctxt "#32011"
+msgid "Plex Access Token"
+msgstr "Plex Access Token"
+
+msgctxt "#32012"
+msgid "Discover Server"
+msgstr "Discover Server"
+
+msgctxt "#32020"
+msgid "Animation Speed"
+msgstr "Animation Speed"
+
+msgctxt "#32021"
+msgid "Items per Page"
+msgstr "Items per Page"
+
+msgctxt "#32022"
+msgid "Sidebar Width"
+msgstr "Sidebar Width"
+
+msgctxt "#32023"
+msgid "Smooth Scrolling"
+msgstr "Smooth Scrolling"
+
+msgctxt "#32024"
+msgid "Auto-play Trailers"
+msgstr "Auto-play Trailers"
+
+msgctxt "#32030"
+msgid "UI Theme"
+msgstr "UI Theme"
+
+msgctxt "#32031"
+msgid "Background Opacity"
+msgstr "Background Opacity"
+
+msgctxt "#32032"
+msgid "Show Fanart"
+msgstr "Show Fanart"
+
+msgctxt "#32033"
+msgid "Blur Background"
+msgstr "Blur Background"
+
+msgctxt "#32034"
+msgid "Accent Color"
+msgstr "Accent Color"
+
+msgctxt "#32040"
+msgid "Enable Debug"
+msgstr "Enable Debug"
+
+msgctxt "#32041"
+msgid "Connection Timeout"
+msgstr "Connection Timeout"
+
+msgctxt "#32042"
+msgid "Use HTTPS"
+msgstr "Use HTTPS"
+
+msgctxt "#32043"
+msgid "Verify SSL"
+msgstr "Verify SSL"
+
+msgctxt "#32044"
+msgid "Clear Cache"
+msgstr "Clear Cache"

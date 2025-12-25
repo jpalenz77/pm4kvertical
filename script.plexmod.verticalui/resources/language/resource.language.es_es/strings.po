@@ -1,0 +1,91 @@
+# Addon Name
+msgid ""
+msgstr ""
+
+msgctxt "#32001"
+msgid "Server Configuration"
+msgstr "Configuración del Servidor"
+
+msgctxt "#32002"
+msgid "Interface Settings"
+msgstr "Configuración de Interfaz"
+
+msgctxt "#32003"
+msgid "Visual Appearance"
+msgstr "Apariencia Visual"
+
+msgctxt "#32004"
+msgid "Advanced Settings"
+msgstr "Configuración Avanzada"
+
+msgctxt "#32010"
+msgid "Plex Server URL"
+msgstr "URL del Servidor Plex"
+
+msgctxt "#32011"
+msgid "Plex Access Token"
+msgstr "Token de Acceso de Plex"
+
+msgctxt "#32012"
+msgid "Discover Server"
+msgstr "Descubrir Servidor"
+
+msgctxt "#32020"
+msgid "Animation Speed"
+msgstr "Velocidad de Animaciones"
+
+msgctxt "#32021"
+msgid "Items per Page"
+msgstr "Items por Página"
+
+msgctxt "#32022"
+msgid "Sidebar Width"
+msgstr "Ancho del Panel Lateral"
+
+msgctxt "#32023"
+msgid "Smooth Scrolling"
+msgstr "Desplazamiento Suave"
+
+msgctxt "#32024"
+msgid "Auto-play Trailers"
+msgstr "Reproducir Trailers Automáticamente"
+
+msgctxt "#32030"
+msgid "UI Theme"
+msgstr "Tema de Interfaz"
+
+msgctxt "#32031"
+msgid "Background Opacity"
+msgstr "Opacidad del Fondo"
+
+msgctxt "#32032"
+msgid "Show Fanart"
+msgstr "Mostrar Arte de Fondo"
+
+msgctxt "#32033"
+msgid "Blur Background"
+msgstr "Desenfocar Fondo"
+
+msgctxt "#32034"
+msgid "Accent Color"
+msgstr "Color de Acento"
+
+msgctxt "#32040"
+msgid "Enable Debug"
+msgstr "Activar Debug"
+
+msgctxt "#32041"
+msgid "Connection Timeout"
+msgstr "Timeout de Conexión"
+
+msgctxt "#32042"
+msgid "Use HTTPS"
+msgstr "Usar HTTPS"
+
+msgctxt "#32043"
+msgid "Verify SSL"
+msgstr "Verificar SSL"
+
+msgctxt "#32044"
+msgid "Clear Cache"
+msgstr "Limpiar Caché"

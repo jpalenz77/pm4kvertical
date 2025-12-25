@@ -1,31 +1,36 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="script.plexmod.verticalui"
-       name="Plex Vertical UI Installer"
-       version="1.0.0"
+       name="Plex Vertical UI - Standalone"
+       version="2.0.0"
        provider-name="Moids">
     <requires>
         <import addon="xbmc.python" version="3.0.0"/>
+        <import addon="script.module.requests" version="2.25.1"/>
         <import addon="script.module.six" />
+        <import addon="script.module.future" />
     </requires>
-    <extension point="xbmc.python.script" library="installer.py">
+    <extension point="xbmc.python.script" library="default.py">
         <provides>executable</provides>
     </extension>
     <extension point="xbmc.addon.metadata">
         <platform>all</platform>
-        <summary lang="en_GB">Vertical UI Mod installer for Plex for Kodi</summary>
-        <summary lang="es_ES">Instalador de modificación UI Vertical para Plex for Kodi</summary>
-        <description lang="en_GB">This addon installs a vertical navigation UI modification for Plex for Kodi (script.plexmod). Features modern design with vertical scrolling, smooth animations, and remote control optimization.</description>
-        <description lang="es_ES">Este addon instala una modificación de interfaz de navegación vertical para Plex for Kodi (script.plexmod). Incluye diseño moderno con scroll vertical, animaciones suaves y optimización para mando a distancia.</description>
-        <disclaimer lang="en_GB">Unofficial modification. Use at your own risk. Requires script.plexmod.</disclaimer>
-        <disclaimer lang="es_ES">Modificación no oficial. Úsala bajo tu propio riesgo. Requiere script.plexmod.</disclaimer>
+        <summary lang="en_GB">Modern Vertical UI for Plex - Standalone Edition</summary>
+        <summary lang="es_ES">UI Vertical Moderna para Plex - Edición Independiente</summary>
+        <description lang="en_GB">Standalone Plex client with modern vertical navigation design. Features Netflix-like interface with smooth animations, vertical scrolling, and optimized remote control navigation. No dependencies required!</description>
+        <description lang="es_ES">Cliente independiente de Plex con diseño de navegación vertical moderna. Incluye interfaz tipo Netflix con animaciones suaves, scroll vertical y navegación optimizada para mando a distancia. ¡No requiere dependencias!</description>
+        <disclaimer lang="en_GB">Independent Plex client. Use at your own risk.</disclaimer>
+        <disclaimer lang="es_ES">Cliente independiente de Plex. Úsalo bajo tu propio riesgo.</disclaimer>
         <license>GPL-2.0-only</license>
         <news>
-v1.0.0 (2025-12-25)
-- Initial release
-- Vertical navigation UI
-- Modern dark theme
-- Smooth animations
-- One-click installer
+v2.0.0 (2025-12-25)
+- Complete standalone rewrite
+- Modern vertical navigation UI
+- Netflix-like interface design
+- No PM4K dependencies required
+- Direct Plex API integration
+- Smooth animations and transitions
+- Optimized for TV and remote control
         </news>
+    </extension>
     </extension>
 </addon>
