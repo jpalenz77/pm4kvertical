@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+    <defaultcontrol always="true">101</defaultcontrol>
+    <coordinates>
+        <system>1</system>
+        <left>0</left>
+        <top>0</top>
+    </coordinates>
+    
+    <!-- Background -->
+    <controls>
+        <control type="image">
+            <left>0</left>
+            <top>0</top>
+            <width>1920</width>
+            <height>1080</height>
+            <texture>black.png</texture>
+            <colordiffuse>FF000000</colordiffuse>
+        </control>
+        
+        <!-- Sidebar -->
+        <control type="group">
+            <left>40</left>
+            <top>80</top>
+            <width>400</width>
+            <height>1000</height>
+            
+            <!-- Plex Logo/Title -->
+            <control type="label">
+                <left>0</left>
+                <top>0</top>
+                <width>400</width>
+                <height>60</height>
+                <font>font30_title</font>
+                <textcolor>FFE5A00D</textcolor>
+                <align>left</align>
+                <label>PLEX</label>
+            </control>
+            
+            <!-- Libraries List (Vertical) -->
+            <control type="list" id="101">
+                <left>0</left>
+                <top>100</top>
+                <width>400</width>
+                <height>800</height>
+                <onleft>201</onleft>
+                <onright>201</onright>
+                <onup>101</onup>
+                <ondown>101</ondown>
+                <pagecontrol>-</pagecontrol>
+                <scrolltime>200</scrolltime>
+                <orientation>vertical</orientation>
+                
+                <itemlayout height="80" width="400">
+                    <control type="label">
+                        <left>20</left>
+                        <top>0</top>
+                        <width>360</width>
+                        <height>80</height>
+                        <font>font13</font>
+                        <textcolor>FFFFFFFF</textcolor>
+                        <selectedcolor>FFE5A00D</selectedcolor>
+                        <align>left</align>
+                        <aligny>center</aligny>
+                        <label>$INFO[ListItem.Label]</label>
+                    </control>
+                </itemlayout>
+                
+                <focusedlayout height="80" width="400">
+                    <control type="image">
+                        <left>0</left>
+                        <top>10</top>
+                        <width>400</width>
+                        <height>60</height>
+                        <texture>white.png</texture>
+                        <colordiffuse>30FFFFFF</colordiffuse>
+                    </control>
+                    <control type="label">
+                        <left>20</left>
+                        <top>0</top>
+                        <width>360</width>
+                        <height>80</height>
+                        <font>font13_title</font>
+                        <textcolor>FFE5A00D</textcolor>
+                        <align>left</align>
+                        <aligny>center</aligny>
+                        <label>$INFO[ListItem.Label]</label>
+                        <animation effect="zoom" start="100" end="105" time="150" center="auto">Focus</animation>
+                    </control>
+                </focusedlayout>
+            </control>
+        </control>
+        
+        <!-- Main Content Area -->
+        <control type="group">
+            <left>480</left>
+            <top>80</top>
+            <width>1400</width>
+            <height>1000</height>
+            
+            <!-- Content Title -->
+            <control type="label">
+                <left>0</left>
+                <top>0</top>
+                <width>1400</width>
+                <height>60</height>
+                <font>font30_title</font>
+                <textcolor>FFFFFFFF</textcolor>
+                <align>left</align>
+                <label>Biblioteca</label>
+            </control>
+            
+            <!-- Vertical Content Panel -->
+            <control type="panel" id="201">
+                <left>0</left>
+                <top>100</top>
+                <width>1400</width>
+                <height>900</height>
+                <onleft>101</onleft>
+                <onright>201</onright>
+                <onup>201</onup>
+                <ondown>201</ondown>
+                <pagecontrol>-</pagecontrol>
+                <scrolltime>200</scrolltime>
+                <orientation>vertical</orientation>
+                
+                <itemlayout height="220" width="280">
+                    <control type="image">
+                        <left>10</left>
+                        <top>10</top>
+                        <width>180</width>
+                        <height>180</height>
+                        <texture>$INFO[ListItem.Art(poster)]</texture>
+                        <aspectratio>scale</aspectratio>
+                    </control>
+                    <control type="label">
+                        <left>10</left>
+                        <top>195</top>
+                        <width>180</width>
+                        <height>20</height>
+                        <font>font10</font>
+                        <textcolor>FFFFFFFF</textcolor>
+                        <align>center</align>
+                        <label>$INFO[ListItem.Label]</label>
+                    </control>
+                </itemlayout>
+                
+                <focusedlayout height="220" width="280">
+                    <control type="image">
+                        <left>5</left>
+                        <top>5</top>
+                        <width>190</width>
+                        <height>190</height>
+                        <texture>$INFO[ListItem.Art(poster)]</texture>
+                        <aspectratio>scale</aspectratio>
+                        <animation effect="zoom" start="100" end="110" time="150" center="auto">Focus</animation>
+                    </control>
+                    <control type="image">
+                        <left>5</left>
+                        <top>5</top>
+                        <width>190</width>
+                        <height>190</height>
+                        <texture>white.png</texture>
+                        <colordiffuse>80E5A00D</colordiffuse>
+                        <animation effect="fade" start="0" end="100" time="150">Focus</animation>
+                    </control>
+                    <control type="label">
+                        <left>5</left>
+                        <top>195</top>
+                        <width>190</width>
+                        <height>20</height>
+                        <font>font12_title</font>
+                        <textcolor>FFE5A00D</textcolor>
+                        <align>center</align>
+                        <label>$INFO[ListItem.Label]</label>
+                        <animation effect="slide" start="0,0" end="0,-5" time="150">Focus</animation>
+                    </control>
+                </focusedlayout>
+            </control>
+        </control>
+    </controls>
+</window>

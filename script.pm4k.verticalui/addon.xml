@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.pm4k.verticalui"
+       name="PM4K Vertical UI"
+       version="1.0.0"
+       provider-name="Moids">
+    <requires>
+        <import addon="xbmc.python" version="3.0.0"/>
+        <import addon="script.plexmod" version="1.0.0"/>
+    </requires>
+    <extension point="xbmc.python.script" library="default.py">
+        <provides>executable</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <platform>all</platform>
+        <summary lang="en_GB">Vertical Navigation UI for PlexMod</summary>
+        <summary lang="es_ES">Interfaz Vertical para PlexMod</summary>
+        <description lang="en_GB">Modern vertical navigation interface for PlexMod (PM4K). Adds Netflix-style vertical scrolling to your Plex libraries. Requires PlexMod (script.plexmod) to be installed and configured.</description>
+        <description lang="es_ES">Interfaz de navegación vertical moderna para PlexMod (PM4K). Añade scroll vertical estilo Netflix a tus bibliotecas Plex. Requiere PlexMod (script.plexmod) instalado y configurado.</description>
+        <disclaimer lang="en_GB">Requires PlexMod (PM4K) installed. This is an unofficial addon.</disclaimer>
+        <disclaimer lang="es_ES">Requiere PlexMod (PM4K) instalado. Este es un addon no oficial.</disclaimer>
+        <license>GPL-2.0-only</license>
+        <assets>
+            <icon>icon.png</icon>
+            <fanart>fanart.png</fanart>
+        </assets>
+        <news>
+v1.0.0 (2025-12-25)
+- Initial release
+- Vertical navigation interface
+- Netflix-style layout
+- Integrates with PM4K libraries
+- Uses PM4K authentication
+- Modern animations
+        </news>
+    </extension>
+</addon>
