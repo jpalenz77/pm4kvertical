@@ -1,32 +1,42 @@
 #!/bin/bash
-# Script para empaquetar el addon
+# Script para empaquetar el addon Plex Vertical UI v2.0.0
 
 ADDON_ID="script.plexmod.verticalui"
-ZIP_NAME="$ADDON_ID-1.0.0.zip"
+VERSION="2.0.0"
+ZIP_NAME="$ADDON_ID-$VERSION.zip"
 
+echo "================================================"
+echo "  Empaquetando Plex Vertical UI v$VERSION"
+echo "================================================"
+echo ""
 echo "Verificando archivos necesarios..."
 
 # Verificar archivos críticos
 MISSING=0
 
-if [ ! -f "$ADDON_ID/installer.py" ]; then
-    echo "❌ Falta: installer.py"
+if [ ! -f "$ADDON_ID/default.py" ]; then
+    echo "❌ Falta: default.py"
     MISSING=1
 fi
 
-if [ ! -f "$ADDON_ID/resources/files/vertical_home.py" ]; then
-    echo "❌ Falta: vertical_home.py"
+if [ ! -f "$ADDON_ID/resources/lib/vertical_home.py" ]; then
+    echo "❌ Falta: resources/lib/vertical_home.py"
     MISSING=1
 fi
 
-if [ ! -f "$ADDON_ID/resources/files/script-plex-vertical-home.xml" ]; then
-    echo "❌ Falta: script-plex-vertical-home.xml"
+if [ ! -f "$ADDON_ID/resources/skins/Main/1080i/script-plex-vertical-home.xml" ]; then
+    echo "❌ Falta: resources/skins/Main/1080i/script-plex-vertical-home.xml"
+    MISSING=1
+fi
+
+if [ ! -f "$ADDON_ID/resources/settings.xml" ]; then
+    echo "❌ Falta: resources/settings.xml"
     MISSING=1
 fi
 
 if [ $MISSING -eq 1 ]; then
     echo ""
-    echo "❌ Faltan archivos necesarios. Cópialos primero."
+    echo "❌ Faltan archivos necesarios."
     exit 1
 fi
 
