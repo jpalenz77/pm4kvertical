@@ -11,9 +11,15 @@ import xbmcaddon
 import xbmcgui
 import xbmcvfs
 import json
-import requests
 import threading
 import time
+
+try:
+    import requests
+except ImportError:
+    xbmc.log('[PlexVerticalUI] ERROR: requests module not found. Install script.module.requests', xbmc.LOGERROR)
+    requests = None
+
 try:
     from urllib.parse import urlparse, parse_qs
 except ImportError:
@@ -32,21 +38,29 @@ class PlexAPI(object):
     def __init__(self):
         self.server_url = ADDON.getSetting('plex_server')
         self.token = ADDON.getSetting('plex_token')
-        self.session = requests.Session()
-        self.session.headers.update({
-            'X-Plex-Token': self.token,
-            'X-Plex-Client-Identifier': 'plex-vertical-ui-kodi',
-            'X-Plex-Product': 'Plex Vertical UI',
-            'X-Plex-Version': ADDON.getAddonInfo('version'),
-            'X-Plex-Platform': 'Kodi',
-            'X-Plex-Device': 'PC',
-            'Accept': 'application/json'
-        })
+        self.session = None
+        
+        if requests:
+            self.session = requests.Session()
+            self.session.headers.update({
+                'X-Plex-Token': self.token,
+                'X-Plex-Client-Identifier': 'plex-vertical-ui-kodi',
+                'X-Plex-Product': 'Plex Vertical UI',
+                'X-Plex-Version': ADDON.getAddonInfo('version'),
+                'X-Plex-Platform': 'Kodi',
+                'X-Plex-Device': 'PC',
+                'Accept': 'application/json'
+            })
+        else:
+            xbmc.log('[{}] PlexAPI: requests module not available, using demo mode'.format(ADDON_ID), xbmc.LOGWARNING)
     
     def get_libraries(self):
         """
         Obtiene las bibliotecas del servidor Plex
         """
+        if not self.session:
+            return []
+            
         try:
             response = self.session.get("{}{}".format(self.server_url, "/library/sections"))
             data = response.json()
@@ -59,6 +73,9 @@ class PlexAPI(object):
         """
         Obtiene contenido de una biblioteca
         """
+        if not self.session:
+            return []
+            
         try:
             url = "{}/library/sections/{}/all".format(self.server_url, library_key)
             params = {
@@ -76,6 +93,9 @@ class PlexAPI(object):
         """
         Buscar contenido en Plex
         """
+        if not self.session:
+            return []
+            
         try:
             url = "{}/search".format(self.server_url)
             params = {'query': query}

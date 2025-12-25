@@ -1,7 +1,6 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <window type="dialog" id="2000">
     <defaultcontrol>100</defaultcontrol>
-    <onload>SetProperty(initialized,1)</onload>
     <coordinates>
         <system>1</system>
         <posx>0</posx>
@@ -15,508 +14,291 @@
             <posy>0</posy>
             <width>1920</width>
             <height>1080</height>
-            <texture>special://skin/media/dialogs/dialog-bg.png</texture>
-            <colordiffuse>FF0F0F0F</colordiffuse>
+            <colordiffuse>FF000000</colordiffuse>
         </control>
         
-        <!-- Main Container -->
-        <control type="group">
-            <posx>0</posx>
-            <posy>0</posy>
-            <width>1920</width>
-            <height>1080</height>
+        <!-- Sidebar Panel (Sections List) -->
+        <control type="list" id="100">
+            <description>Sections List</description>
+            <posx>20</posx>
+            <posy>80</posy>
+            <width>350</width>
+            <height>920</height>
+            <onup>100</onup>
+            <ondown>100</ondown>
+            <onleft>500</onleft>
+            <onright>200</onright>
+            <orientation>vertical</orientation>
+            <scrolltime>300</scrolltime>
             
-            <!-- Sidebar Panel -->
-            <control type="panel" id="100">
-                <description>Section List</description>
-                <posx>20</posx>
-                <posy>80</posy>
-                <width>350</width>
-                <height>920</height>
-                <onup>100</onup>
-                <ondown>100</ondown>
-                <onleft>500</onleft>
-                <onright>200</onright>
-                <viewtype label="list">list</viewtype>
-                <orientation>vertical</orientation>
-                <scrolltime tween="cubic" easing="out">400</scrolltime>
-                <itemlayout height="80" width="350">
-                    <control type="image">
-                        <posx>10</posx>
-                        <posy>10</posy>
-                        <width>330</width>
-                        <height>60</height>
-                        <texture>special://skin/media/button-nofocus.png</texture>
-                        <colordiffuse>FF1A1A1A</colordiffuse>
-                        <bordersize>2</bordersize>
-                    </control>
-                    <control type="image">
-                        <posx>25</posx>
-                        <posy>20</posy>
-                        <width>40</width>
-                        <height>40</height>
-                        <aspectratio>keep</aspectratio>
-                        <texture>$INFO[ListItem.Icon]</texture>
-                    </control>
-                    <control type="label">
-                        <posx>80</posx>
-                        <posy>25</posy>
-                        <width>240</width>
-                        <height>30</height>
-                        <font>font14</font>
-                        <textcolor>FFCCCCCC</textcolor>
-                        <selectedcolor>FFE5A00D</selectedcolor>
-                        <align>left</align>
-                        <aligny>center</aligny>
-                        <label>$INFO[ListItem.Label]</label>
-                    </control>
-                </itemlayout>
-                <focusedlayout height="80" width="350">
-                    <control type="image">
-                        <posx>10</posx>
-                        <posy>10</posy>
-                        <width>330</width>
-                        <height>60</height>
-                        <texture>special://skin/media/button-focus.png</texture>
-                        <colordiffuse>FFE5A00D</colordiffuse>
-                        <bordersize>2</bordersize>
-                        <animation effect="zoom" center="175,40" start="100" end="105" time="200" tween="cubic" easing="out">Focus</animation>
-                        <animation effect="zoom" center="175,40" start="105" end="100" time="200" tween="cubic" easing="out">UnFocus</animation>
-                    </control>
-                    <control type="image">
-                        <posx>25</posx>
-                        <posy>20</posy>
-                        <width>40</width>
-                        <height>40</height>
-                        <aspectratio>keep</aspectratio>
-                        <texture>$INFO[ListItem.Icon]</texture>
-                        <animation effect="zoom" center="45,40" start="100" end="110" time="200" tween="cubic" easing="out">Focus</animation>
-                        <animation effect="zoom" center="45,40" start="110" end="100" time="200" tween="cubic" easing="out">UnFocus</animation>
-                    </control>
-                    <control type="label">
-                        <posx>80</posx>
-                        <posy>25</posy>
-                        <width>240</width>
-                        <height>30</height>
-                        <font>font14_title</font>
-                        <textcolor>FFFFFFFF</textcolor>
-                        <selectedcolor>FFFFFFFF</selectedcolor>
-                        <align>left</align>
-                        <aligny>center</aligny>
-                        <label>$INFO[ListItem.Label]</label>
-                    </control>
-                </focusedlayout>
-            </control>
-            
-            <!-- Content Panel -->
-            <control type="panel" id="200">
-                <description>Content List</description>
-                <posx>390</posx>
-                <posy>120</posy>
-                <width>1500</width>
-                <height>880</height>
-                <onup>200</onup>
-                <ondown>200</ondown>
-                <onleft>100</onleft>
-                <onright>200</onright>
-                <viewtype label="list">list</viewtype>
-                <orientation>vertical</orientation>
-                <scrolltime tween="cubic" easing="out">350</scrolltime>
-                <itemlayout height="140" width="1500">
-                    <control type="group">
-                        <posx>10</posx>
-                        <posy>10</posy>
-                        <width>1480</width>
-                        <height>120</height>
-                        
-                        <!-- Background -->
-                        <control type="image">
-                            <posx>0</posx>
-                            <posy>0</posy>
-                            <width>1480</width>
-                            <height>120</height>
-                            <texture>special://skin/media/listitem-nofocus.png</texture>
-                            <colordiffuse>FF202020</colordiffuse>
-                            <bordersize>1</bordersize>
-                        </control>
-                        
-                        <!-- Thumbnail -->
-                        <control type="image">
-                            <posx>10</posx>
-                            <posy>10</posy>
-                            <width>180</width>
-                            <height>100</height>
-                            <aspectratio>scale</aspectratio>
-                            <texture>$INFO[ListItem.Art(thumb)]</texture>
-                            <fadetime>200</fadetime>
-                            <bordersize>1</bordersize>
-                        </control>
-                        
-                        <!-- Content Info -->
-                        <control type="group">
-                            <posx>210</posx>
-                            <posy>15</posy>
-                            <width>1200</width>
-                            <height>90</height>
-                            
-                            <!-- Title -->
-                            <control type="label">
-                                <posx>0</posx>
-                                <posy>0</posy>
-                                <width>800</width>
-                                <height>30</height>
-                                <font>font16_title</font>
-                                <textcolor>FFFFFFFF</textcolor>
-                                <align>left</align>
-                                <aligny>top</aligny>
-                                <label>$INFO[ListItem.Label]</label>
-                            </control>
-                            
-                            <!-- Subtitle -->
-                            <control type="label">
-                                <posx>0</posx>
-                                <posy>30</posy>
-                                <width>600</width>
-                                <height>25</height>
-                                <font>font12</font>
-                                <textcolor>FFCCCCCC</textcolor>
-                                <align>left</align>
-                                <aligny>top</aligny>
-                                <label>$INFO[ListItem.Label2]</label>
-                            </control>
-                            
-                            <!-- Description -->
-                            <control type="textbox">
-                                <posx>0</posx>
-                                <posy>55</posy>
-                                <width>1000</width>
-                                <height>35</height>
-                                <font>font10</font>
-                                <textcolor>FF999999</textcolor>
-                                <align>left</align>
-                                <label>$INFO[ListItem.Property(description)]</label>
-                            </control>
-                            
-                            <!-- Rating and Duration -->
-                            <control type="label">
-                                <posx>810</posx>
-                                <posy>0</posy>
-                                <width>200</width>
-                                <height>25</height>
-                                <font>font12</font>
-                                <textcolor>FFE5A00D</textcolor>
-                                <align>right</align>
-                                <aligny>center</aligny>
-                                <label>★ $INFO[ListItem.Property(rating)]</label>
-                                <visible>!IsEmpty(ListItem.Property(rating))</visible>
-                            </control>
-                            
-                            <control type="label">
-                                <posx>810</posx>
-                                <posy>25</posy>
-                                <width>200</width>
-                                <height>25</height>
-                                <font>font10</font>
-                                <textcolor>FF999999</textcolor>
-                                <align>right</align>
-                                <aligny>center</aligny>
-                                <label>$INFO[ListItem.Property(duration)]</label>
-                                <visible>!IsEmpty(ListItem.Property(duration))</visible>
-                            </control>
-                        </control>
-                    </control>
-                </itemlayout>
-                
-                <focusedlayout height="140" width="1500">
-                    <control type="group">
-                        <posx>10</posx>
-                        <posy>10</posy>
-                        <width>1480</width>
-                        <height>120</height>
-                        <animation effect="zoom" center="740,60" start="100" end="102" time="300" tween="cubic" easing="out">Focus</animation>
-                        <animation effect="zoom" center="740,60" start="102" end="100" time="300" tween="cubic" easing="out">UnFocus</animation>
-                        
-                        <!-- Background with glow -->
-                        <control type="image">
-                            <posx>-5</posx>
-                            <posy>-5</posy>
-                            <width>1490</width>
-                            <height>130</height>
-                            <texture>special://skin/media/listitem-focus.png</texture>
-                            <colordiffuse>FFE5A00D</colordiffuse>
-                            <bordersize>2</bordersize>
-                            <animation effect="fade" start="0" end="100" time="300">Focus</animation>
-                            <animation effect="fade" start="100" end="0" time="300">UnFocus</animation>
-                        </control>
-                        
-                        <control type="image">
-                            <posx>0</posx>
-                            <posy>0</posy>
-                            <width>1480</width>
-                            <height>120</height>
-                            <texture>special://skin/media/listitem-focus.png</texture>
-                            <colordiffuse>FF2A2A2A</colordiffuse>
-                            <bordersize>1</bordersize>
-                        </control>
-                        
-                        <!-- Thumbnail with glow -->
-                        <control type="image">
-                            <posx>10</posx>
-                            <posy>10</posy>
-                            <width>180</width>
-                            <height>100</height>
-                            <aspectratio>scale</aspectratio>
-                            <texture>$INFO[ListItem.Art(thumb)]</texture>
-                            <fadetime>200</fadetime>
-                            <bordersize>2</bordersize>
-                            <animation effect="zoom" center="100,60" start="100" end="105" time="300" tween="cubic" easing="out">Focus</animation>
-                            <animation effect="zoom" center="100,60" start="105" end="100" time="300" tween="cubic" easing="out">UnFocus</animation>
-                        </control>
-                        
-                        <!-- Play button overlay -->
-                        <control type="image">
-                            <posx>80</posx>
-                            <posy>45</posy>
-                            <width>40</width>
-                            <height>40</height>
-                            <texture>special://skin/media/play-button.png</texture>
-                            <colordiffuse>FFFFFFFF</colordiffuse>
-                            <animation effect="fade" start="0" end="80" time="300">Focus</animation>
-                            <animation effect="fade" start="80" end="0" time="300">UnFocus</animation>
-                            <animation effect="zoom" center="20,20" start="100" end="110" time="200" tween="sine" easing="inout" loop="true" reversible="true">Focus</animation>
-                        </control>
-                        
-                        <!-- Content Info -->
-                        <control type="group">
-                            <posx>210</posx>
-                            <posy>15</posy>
-                            <width>1200</width>
-                            <height>90</height>
-                            
-                            <!-- Title -->
-                            <control type="label">
-                                <posx>0</posx>
-                                <posy>0</posy>
-                                <width>800</width>
-                                <height>30</height>
-                                <font>font16_title</font>
-                                <textcolor>FFFFFFFF</textcolor>
-                                <shadowcolor>FF000000</shadowcolor>
-                                <align>left</align>
-                                <aligny>top</aligny>
-                                <label>$INFO[ListItem.Label]</label>
-                            </control>
-                            
-                            <!-- Subtitle -->
-                            <control type="label">
-                                <posx>0</posx>
-                                <posy>30</posy>
-                                <width>600</width>
-                                <height>25</height>
-                                <font>font12</font>
-                                <textcolor>FFDDDDDD</textcolor>
-                                <align>left</align>
-                                <aligny>top</aligny>
-                                <label>$INFO[ListItem.Label2]</label>
-                            </control>
-                            
-                            <!-- Description -->
-                            <control type="textbox">
-                                <posx>0</posx>
-                                <posy>55</posy>
-                                <width>1000</width>
-                                <height>35</height>
-                                <font>font10</font>
-                                <textcolor>FFAAAAAA</textcolor>
-                                <align>left</align>
-                                <label>$INFO[ListItem.Property(description)]</label>
-                            </control>
-                            
-                            <!-- Rating and Duration -->
-                            <control type="label">
-                                <posx>810</posx>
-                                <posy>0</posy>
-                                <width>200</width>
-                                <height>25</height>
-                                <font>font12</font>
-                                <textcolor>FFFFE000</textcolor>
-                                <shadowcolor>FF000000</shadowcolor>
-                                <align>right</align>
-                                <aligny>center</aligny>
-                                <label>★ $INFO[ListItem.Property(rating)]</label>
-                                <visible>!IsEmpty(ListItem.Property(rating))</visible>
-                            </control>
-                            
-                            <control type="label">
-                                <posx>810</posx>
-                                <posy>25</posy>
-                                <width>200</width>
-                                <height>25</height>
-                                <font>font10</font>
-                                <textcolor>FFBBBBBB</textcolor>
-                                <align>right</align>
-                                <aligny>center</aligny>
-                                <label>$INFO[ListItem.Property(duration)]</label>
-                                <visible>!IsEmpty(ListItem.Property(duration))</visible>
-                            </control>
-                        </control>
-                    </control>
-                </focusedlayout>
-            </control>
-            
-            <!-- Top Bar with Plex Logo and Title -->
-            <control type="group">
-                <posx>20</posx>
-                <posy>20</posy>
-                <width>1880</width>
-                <height>50</height>
-                
-                <!-- Plex Logo -->
+            <itemlayout height="80" width="350">
                 <control type="image">
-                    <posx>0</posx>
-                    <posy>0</posy>
-                    <width>120</width>
+                    <posx>10</posx>
+                    <posy>5</posy>
+                    <width>330</width>
+                    <height>70</height>
+                    <colordiffuse>FF1A1A1A</colordiffuse>
+                </control>
+                <control type="image">
+                    <posx>25</posx>
+                    <posy>20</posy>
+                    <width>40</width>
                     <height>40</height>
                     <aspectratio>keep</aspectratio>
-                    <texture>special://skin/media/plex-logo.png</texture>
+                    <texture>$INFO[ListItem.Icon]</texture>
+                </control>
+                <control type="label">
+                    <posx>80</posx>
+                    <posy>20</posy>
+                    <width>250</width>
+                    <height>40</height>
+                    <font>font13</font>
+                    <textcolor>FFCCCCCC</textcolor>
+                    <selectedcolor>FFE5A00D</selectedcolor>
+                    <align>left</align>
+                    <aligny>center</aligny>
+                    <label>$INFO[ListItem.Label]</label>
+                </control>
+            </itemlayout>
+            
+            <focusedlayout height="80" width="350">
+                <control type="image">
+                    <posx>10</posx>
+                    <posy>5</posy>
+                    <width>330</width>
+                    <height>70</height>
                     <colordiffuse>FFE5A00D</colordiffuse>
                 </control>
-                
-                <!-- Current Section Title -->
-                <control type="label">
-                    <posx>140</posx>
-                    <posy>0</posy>
-                    <width>600</width>
+                <control type="image">
+                    <posx>25</posx>
+                    <posy>20</posy>
+                    <width>40</width>
                     <height>40</height>
-                    <font>font24_title</font>
+                    <aspectratio>keep</aspectratio>
+                    <texture>$INFO[ListItem.Icon]</texture>
+                </control>
+                <control type="label">
+                    <posx>80</posx>
+                    <posy>20</posy>
+                    <width>250</width>
+                    <height>40</height>
+                    <font>font13_title</font>
+                    <textcolor>FFFFFFFF</textcolor>
+                    <align>left</align>
+                    <aligny>center</aligny>
+                    <label>$INFO[ListItem.Label]</label>
+                </control>
+            </focusedlayout>
+        </control>
+        
+        <!-- Content Panel -->
+        <control type="list" id="200">
+            <description>Content List</description>
+            <posx>390</posx>
+            <posy>120</posy>
+            <width>1500</width>
+            <height>880</height>
+            <onup>200</onup>
+            <ondown>200</ondown>
+            <onleft>100</onleft>
+            <onright>200</onright>
+            <orientation>vertical</orientation>
+            <scrolltime>300</scrolltime>
+            
+            <itemlayout height="140" width="1480">
+                <control type="image">
+                    <posx>10</posx>
+                    <posy>5</posy>
+                    <width>1460</width>
+                    <height>130</height>
+                    <colordiffuse>FF202020</colordiffuse>
+                </control>
+                <control type="image">
+                    <posx>20</posx>
+                    <posy>20</posy>
+                    <width>180</width>
+                    <height>100</height>
+                    <aspectratio>scale</aspectratio>
+                    <texture>$INFO[ListItem.Art(thumb)]</texture>
+                </control>
+                <control type="label">
+                    <posx>220</posx>
+                    <posy>25</posy>
+                    <width>800</width>
+                    <height>30</height>
+                    <font>font14</font>
+                    <textcolor>FFFFFFFF</textcolor>
+                    <align>left</align>
+                    <label>$INFO[ListItem.Label]</label>
+                </control>
+                <control type="label">
+                    <posx>220</posx>
+                    <posy>55</posy>
+                    <width>600</width>
+                    <height>25</height>
+                    <font>font12</font>
+                    <textcolor>FFCCCCCC</textcolor>
+                    <align>left</align>
+                    <label>$INFO[ListItem.Label2]</label>
+                </control>
+                <control type="textbox">
+                    <posx>220</posx>
+                    <posy>80</posy>
+                    <width>1000</width>
+                    <height>40</height>
+                    <font>font10</font>
+                    <textcolor>FF999999</textcolor>
+                    <align>left</align>
+                    <label>$INFO[ListItem.Property(description)]</label>
+                </control>
+            </itemlayout>
+            
+            <focusedlayout height="140" width="1480">
+                <control type="image">
+                    <posx>5</posx>
+                    <posy>0</posy>
+                    <width>1470</width>
+                    <height>140</height>
+                    <colordiffuse>FFE5A00D</colordiffuse>
+                </control>
+                <control type="image">
+                    <posx>10</posx>
+                    <posy>5</posy>
+                    <width>1460</width>
+                    <height>130</height>
+                    <colordiffuse>FF2A2A2A</colordiffuse>
+                </control>
+                <control type="image">
+                    <posx>20</posx>
+                    <posy>20</posy>
+                    <width>180</width>
+                    <height>100</height>
+                    <aspectratio>scale</aspectratio>
+                    <texture>$INFO[ListItem.Art(thumb)]</texture>
+                </control>
+                <control type="label">
+                    <posx>220</posx>
+                    <posy>25</posy>
+                    <width>800</width>
+                    <height>30</height>
+                    <font>font14_title</font>
                     <textcolor>FFFFFFFF</textcolor>
                     <shadowcolor>FF000000</shadowcolor>
                     <align>left</align>
-                    <aligny>center</aligny>
-                    <label>Plex Vertical UI</label>
+                    <label>$INFO[ListItem.Label]</label>
                 </control>
-            </control>
-            
-            <!-- Bottom Button Bar -->
-            <control type="group">
-                <posx>20</posx>
-                <posy>1020</posy>
-                <width>350</width>
-                <height>50</height>
-                
-                <!-- Search Button -->
-                <control type="button" id="300">
-                    <description>Search Button</description>
-                    <posx>0</posx>
-                    <posy>0</posy>
-                    <width>110</width>
-                    <height>40</height>
-                    <onup>100</onup>
-                    <ondown>100</ondown>
-                    <onleft>500</onleft>
-                    <onright>400</onright>
-                    <texturefocus>special://skin/media/button-focus.png</texturefocus>
-                    <texturenofocus>special://skin/media/button-nofocus.png</texturenofocus>
+                <control type="label">
+                    <posx>220</posx>
+                    <posy>55</posy>
+                    <width>600</width>
+                    <height>25</height>
                     <font>font12</font>
-                    <textcolor>FFCCCCCC</textcolor>
-                    <focusedcolor>FFFFFFFF</focusedcolor>
-                    <label>Buscar</label>
-                    <align>center</align>
-                    <aligny>center</aligny>
+                    <textcolor>FFDDDDDD</textcolor>
+                    <align>left</align>
+                    <label>$INFO[ListItem.Label2]</label>
                 </control>
-                
-                <!-- Settings Button -->
-                <control type="button" id="400">
-                    <description>Settings Button</description>
-                    <posx>120</posx>
-                    <posy>0</posy>
-                    <width>110</width>
+                <control type="textbox">
+                    <posx>220</posx>
+                    <posy>80</posy>
+                    <width>1000</width>
                     <height>40</height>
-                    <onup>100</onup>
-                    <ondown>100</ondown>
-                    <onleft>300</onleft>
-                    <onright>500</onright>
-                    <texturefocus>special://skin/media/button-focus.png</texturefocus>
-                    <texturenofocus>special://skin/media/button-nofocus.png</texturenofocus>
-                    <font>font12</font>
-                    <textcolor>FFCCCCCC</textcolor>
-                    <focusedcolor>FFFFFFFF</focusedcolor>
-                    <label>Config</label>
-                    <align>center</align>
-                    <aligny>center</aligny>
+                    <font>font10</font>
+                    <textcolor>FFAAAAAA</textcolor>
+                    <align>left</align>
+                    <label>$INFO[ListItem.Property(description)]</label>
                 </control>
-                
-                <!-- User Button -->
-                <control type="button" id="500">
-                    <description>User Button</description>
-                    <posx>240</posx>
-                    <posy>0</posy>
-                    <width>110</width>
-                    <height>40</height>
-                    <onup>100</onup>
-                    <ondown>100</ondown>
-                    <onleft>400</onleft>
-                    <onright>300</onright>
-                    <texturefocus>special://skin/media/button-focus.png</texturefocus>
-                    <texturenofocus>special://skin/media/button-nofocus.png</texturenofocus>
+                <control type="label">
+                    <posx>1350</posx>
+                    <posy>25</posy>
+                    <width>100</width>
+                    <height>25</height>
                     <font>font12</font>
-                    <textcolor>FFCCCCCC</textcolor>
-                    <focusedcolor>FFFFFFFF</focusedcolor>
-                    <label>Usuario</label>
-                    <align>center</align>
+                    <textcolor>FFFFE000</textcolor>
+                    <align>right</align>
                     <aligny>center</aligny>
+                    <label>★ $INFO[ListItem.Property(rating)]</label>
+                    <visible>!IsEmpty(ListItem.Property(rating))</visible>
                 </control>
-            </control>
-            
-            <!-- Scroll Indicator -->
-            <control type="image">
-                <description>Scroll Indicator</description>
-                <posx>1880</posx>
-                <posy>150</posy>
-                <width>8</width>
-                <height>800</height>
-                <texture>special://skin/media/scrollbar-bg.png</texture>
-                <colordiffuse>FF333333</colordiffuse>
-                <visible>Control.HasFocus(200)</visible>
-            </control>
-            
+            </focusedlayout>
         </control>
         
-        <!-- Loading Overlay -->
-        <control type="group" id="9000">
-            <visible>false</visible>
-            <animation effect="fade" start="0" end="100" time="200">Visible</animation>
-            <animation effect="fade" start="100" end="0" time="200">Hidden</animation>
-            
-            <control type="image">
-                <posx>0</posx>
-                <posy>0</posy>
-                <width>1920</width>
-                <height>1080</height>
-                <texture>special://skin/media/dialogs/dialog-bg.png</texture>
-                <colordiffuse>AA000000</colordiffuse>
-            </control>
-            
-            <control type="image">
-                <posx>910</posx>
-                <posy>490</posy>
-                <width>100</width>
-                <height>100</height>
-                <aspectratio>keep</aspectratio>
-                <texture>special://skin/media/loading-spinner.png</texture>
-                <animation effect="rotate" center="50,50" start="0" end="360" time="1000" loop="true">Conditional</animation>
-            </control>
+        <!-- Top Bar -->
+        <control type="group">
+            <posx>20</posx>
+            <posy>20</posy>
+            <width>1880</width>
+            <height>50</height>
             
             <control type="label">
-                <posx>960</posx>
-                <posy>620</posy>
-                <width>400</width>
-                <height>30</height>
-                <font>font16</font>
-                <textcolor>FFFFFFFF</textcolor>
-                <align>center</align>
+                <posx>0</posx>
+                <posy>0</posy>
+                <width>800</width>
+                <height>40</height>
+                <font>font24_title</font>
+                <textcolor>FFE5A00D</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <align>left</align>
                 <aligny>center</aligny>
-                <label>Cargando...</label>
+                <label>Plex Vertical UI</label>
+            </control>
+        </control>
+        
+        <!-- Bottom Buttons -->
+        <control type="group">
+            <posx>20</posx>
+            <posy>1020</posy>
+            <width>350</width>
+            <height>50</height>
+            
+            <control type="button" id="300">
+                <description>Search Button</description>
+                <posx>0</posx>
+                <posy>0</posy>
+                <width>110</width>
+                <height>40</height>
+                <onup>100</onup>
+                <ondown>100</ondown>
+                <onleft>500</onleft>
+                <onright>400</onright>
+                <font>font12</font>
+                <textcolor>FFCCCCCC</textcolor>
+                <focusedcolor>FFFFFFFF</focusedcolor>
+                <label>Buscar</label>
+                <align>center</align>
+            </control>
+            
+            <control type="button" id="400">
+                <description>Settings Button</description>
+                <posx>120</posx>
+                <posy>0</posy>
+                <width>110</width>
+                <height>40</height>
+                <onup>100</onup>
+                <ondown>100</ondown>
+                <onleft>300</onleft>
+                <onright>500</onright>
+                <font>font12</font>
+                <textcolor>FFCCCCCC</textcolor>
+                <focusedcolor>FFFFFFFF</focusedcolor>
+                <label>Config</label>
+                <align>center</align>
+            </control>
+            
+            <control type="button" id="500">
+                <description>User Button</description>
+                <posx>240</posx>
+                <posy>0</posy>
+                <width>110</width>
+                <height>40</height>
+                <onup>100</onup>
+                <ondown>100</ondown>
+                <onleft>400</onleft>
+                <onright>300</onright>
+                <font>font12</font>
+                <textcolor>FFCCCCCC</textcolor>
+                <focusedcolor>FFFFFFFF</focusedcolor>
+                <label>Usuario</label>
+                <align>center</align>
             </control>
         </control>
     </controls>
