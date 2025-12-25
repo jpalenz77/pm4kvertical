@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.plexmod.verticalui"
+       name="Plex Vertical UI Installer"
+       version="1.0.0"
+       provider-name="Moids">
+    <requires>
+        <import addon="xbmc.python" version="3.0.0"/>
+        <import addon="script.module.six" />
+    </requires>
+    <extension point="xbmc.python.script" library="installer.py">
+        <provides>executable</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <platform>all</platform>
+        <summary lang="en_GB">Vertical UI Mod installer for Plex for Kodi</summary>
+        <summary lang="es_ES">Instalador de modificación UI Vertical para Plex for Kodi</summary>
+        <description lang="en_GB">This addon installs a vertical navigation UI modification for Plex for Kodi (script.plexmod). Features modern design with vertical scrolling, smooth animations, and remote control optimization.</description>
+        <description lang="es_ES">Este addon instala una modificación de interfaz de navegación vertical para Plex for Kodi (script.plexmod). Incluye diseño moderno con scroll vertical, animaciones suaves y optimización para mando a distancia.</description>
+        <disclaimer lang="en_GB">Unofficial modification. Use at your own risk. Requires script.plexmod.</disclaimer>
+        <disclaimer lang="es_ES">Modificación no oficial. Úsala bajo tu propio riesgo. Requiere script.plexmod.</disclaimer>
+        <license>GPL-2.0-only</license>
+        <news>
+v1.0.0 (2025-12-25)
+- Initial release
+- Vertical navigation UI
+- Modern dark theme
+- Smooth animations
+- One-click installer
+        </news>
+    </extension>
+</addon>

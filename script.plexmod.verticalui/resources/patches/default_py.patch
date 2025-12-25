@@ -1,0 +1,29 @@
+                
+                # ==================== VERTICAL UI INTEGRATION ====================
+                import xbmcaddon
+                addon = xbmcaddon.Addon()
+                use_vertical_ui = addon.getSetting('use_vertical_ui')
+                
+                if use_vertical_ui == 'true':
+                    log('Main: script.plexmod: Vertical UI mode enabled')
+                    try:
+                        from lib.vertical_home import VerticalHomeWindow
+                        log('Main: script.plexmod: Starting Vertical UI...')
+                        setGlobalProperty('running', '1', wait=True)
+                        addon_path = addon.getAddonInfo('path')
+                        window = VerticalHomeWindow(
+                            'script-plex-vertical-home.xml',
+                            addon_path,
+                            'Main',
+                            '1080i',
+                            plex_network=None
+                        )
+                        window.doModal()
+                        del window
+                        setGlobalProperty('running', '', wait=True)
+                        log('Main: script.plexmod: Vertical UI closed')
+                        sys.exit(0)
+                    except Exception as e:
+                        log('Main: script.plexmod: Error starting Vertical UI: {}', e)
+                        xbmcgui.Dialog().ok('Error', 'Error al iniciar la interfaz vertical.', str(e))
+                # ==================== END VERTICAL UI INTEGRATION ====================

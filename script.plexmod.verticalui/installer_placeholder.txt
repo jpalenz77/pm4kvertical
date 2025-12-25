@@ -1,0 +1,6 @@
+IMPORTANTE: 
+
+Este es un placeholder. Debes crear el archivo installer.py en la raíz
+del addon con el código completo del instalador.
+
+El código está en el artifact "installer.py" que te proporcioné.

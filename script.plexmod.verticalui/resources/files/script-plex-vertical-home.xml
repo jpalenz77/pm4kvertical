@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<window type="dialog" id="2000">
+    <defaultcontrol>100</defaultcontrol>
+    <onload>SetProperty(initialized,1)</onload>
+    <coordinates>
+        <system>1</system>
+        <posx>0</posx>
+        <posy>0</posy>
+    </coordinates>
+    
+    <controls>
+        <!-- Fondo principal con gradiente -->
+        <control type="image">
+            <posx>0</posx>
+            <posy>0</posy>
+            <width>1920</width>
+            <height>1080</height>
+            <texture>script.plex/white-square.png</texture>
+            <colordiffuse>FF0F0F0F</colordiffuse>
+        </control>
+        
+        <!-- Panel lateral izquierdo para navegación vertical -->
+        <control type="group">
+            <posx>40</posx>
+            <posy>80</posy>
+            <width>380</width>
+            <height>920</height>
+            
+            <!-- Fondo del panel lateral -->
+            <control type="image">
+                <posx>0</posx>
+                <posy>0</posy>
+                <width>380</width>
+                <height>920</height>
+                <texture border="20">script.plex/white-square-rounded.png</texture>
+                <colordiffuse>FF1A1A1A</colordiffuse>
+            </control>
+            
+            <!-- Logo de Plex -->
+            <control type="image">
+                <posx>40</posx>
+                <posy>30</posy>
+                <width>150</width>
+                <height>60</height>
+                <texture>script.plex/plex-logo.png</texture>
+                <aspectratio>keep</aspectratio>
+            </control>
+            
+            <!-- Lista vertical de secciones -->
+            <control type="fixedlist" id="100">
+                <posx>20</posx>
+                <posy>120</posy>
+                <width>340</width>
+                <height>750</height>
+                <onup>100</onup>
+                <ondown>100</ondown>
+                <onleft>200</onleft>
+                <onright>200</onright>
+                <orientation>vertical</orientation>
+                <viewtype label="">list</viewtype>
+                <scrolltime tween="quadratic" easing="out">300</scrolltime>
+                <focusposition>2</focusposition>
+                <movement>2</movement>
+                
+                <itemlayout height="90" width="340">
+                    <control type="group">
+                        <!-- Fondo del item -->
+                        <control type="image">
+                            <posx>10</posx>
+                            <posy>5</posy>
+                            <width>320</width>
+                            <height>80</height>
+                            <texture border="12">script.plex/white-square-rounded.png</texture>
+                            <colordiffuse>FF252525</colordiffuse>
+                        </control>
+                        
+                        <!-- Icono -->
+                        <control type="image">
+                            <posx>30</posx>
+                            <posy>20</posy>
+                            <width>50</width>
+                            <height>50</height>
+                            <texture>$INFO[ListItem.Icon]</texture>
+                            <aspectratio>keep</aspectratio>
+                            <colordiffuse>FF999999</colordiffuse>
+                        </control>
+                        
+                        <!-- Texto del item -->
+                        <control type="label">
+                            <posx>100</posx>
+                            <posy>25</posy>
+                            <width>210</width>
+                            <height>40</height>
+                            <font>font14</font>
+                            <textcolor>FFCCCCCC</textcolor>
+                            <label>$INFO[ListItem.Label]</label>
+                        </control>
+                        
+                        <!-- Contador de items (si existe) -->
+                        <control type="label">
+                            <posx>290</posx>
+                            <posy>30</posy>
+                            <width>30</width>
+                            <height>30</height>
+                            <align>center</align>
+                            <aligny>center</aligny>
+                            <font>font12</font>
+                            <textcolor>FF666666</textcolor>
+                            <label>$INFO[ListItem.Property(unwatched.count)]</label>
+                            <visible>!String.IsEmpty(ListItem.Property(unwatched.count))</visible>
+                        </control>
+                    </control>
+                </itemlayout>
+                
+                <focusedlayout height="90" width="340">
+                    <control type="group">
+                        <!-- Fondo del item enfocado con animación -->
+                        <control type="image">
+                            <posx>10</posx>
+                            <posy>5</posy>
+                            <width>320</width>
+                            <height>80</height>
+                            <texture border="12">script.plex/white-square-rounded.png</texture>
+                            <colordiffuse>FFE5A00D</colordiffuse>
+                            <animation effect="zoom" start="100" end="105" time="200" center="160,40" reversible="true">Focus</animation>
+                            <animation effect="fade" start="0" end="100" time="200">VisibleChange</animation>
+                        </control>
+                        
+                        <!-- Barra lateral de color -->
+                        <control type="image">
+                            <posx>10</posx>
+                            <posy>5</posy>
+                            <width>6</width>
+                            <height>80</height>
+                            <texture>script.plex/white-square.png</texture>
+                            <colordiffuse>FFCC7B19</colordiffuse>
+                        </control>
+                        
+                        <!-- Icono enfocado -->
+                        <control type="image">
+                            <posx>30</posx>
+                            <posy>20</posy>
+                            <width>50</width>
+                            <height>50</height>
+                            <texture>$INFO[ListItem.Icon]</texture>
+                            <aspectratio>keep</aspectratio>
+                            <colordiffuse>FFFFFFFF</colordiffuse>
+                            <animation effect="zoom" start="100" end="110" time="200" center="25,25" reversible="true">Focus</animation>
+                        </control>
+                        
+                        <!-- Texto del item enfocado -->
+                        <control type="label">
+                            <posx>100</posx>
+                            <posy>25</posy>
+                            <width>210</width>
+                            <height>40</height>
+                            <font>font14_title</font>
+                            <textcolor>FFFFFFFF</textcolor>
+                            <label>$INFO[ListItem.Label]</label>
+                            <shadowcolor>44000000</shadowcolor>
+                        </control>
+                        
+                        <!-- Contador de items enfocado -->
+                        <control type="label">
+                            <posx>285</posx>
+                            <posy>27</posy>
+                            <width>40</width>
+                            <height>36</height>
+                            <align>center</align>
+                            <aligny>center</aligny>
+                            <font>font13_title</font>
+                            <textcolor>FF1A1A1A</textcolor>
+                            <label>$INFO[ListItem.Property(unwatched.count)]</label>
+                            <visible>!String.IsEmpty(ListItem.Property(unwatched.count))</visible>
+                        </control>
+                    </control>
+                </focusedlayout>
+            </control>
+            
+            <!-- Botones inferiores -->
+            <control type="group">
+                <posx>20</posx>
+                <posy>820</posy>
+                <width>340</width>
+                <height>80</height>
+                
+                <!-- Botón de configuración -->
+                <control type="button" id="150">
+                    <posx>10</posx>
+                    <posy>0</posy>
+                    <width>70</width>
+                    <height>70</height>
+                    <texturefocus colordiffuse="FFE5A00D">script.plex/buttons/settings-focus.png</texturefocus>
+                    <texturenofocus colordiffuse="99FFFFFF">script.plex/buttons/settings.png</texturenofocus>
+                    <onup>100</onup>
+                    <ondown>100</ondown>
+                    <onleft>152</onleft>
+                    <onright>200</onright>
+                    <animation effect="zoom" start="100" end="120" time="150" center="35,35" reversible="false">Focus</animation>
+                    <animation effect="zoom" start="120" end="100" time="150" center="35,35" reversible="false">UnFocus</animation>
+                </control>
+                
+                <!-- Botón de búsqueda -->
+                <control type="button" id="151">
+                    <posx>100</posx>
+                    <posy>0</posy>
+                    <width>70</width>
+                    <height>70</height>
+                    <texturefocus colordiffuse="FFE5A00D">script.plex/buttons/search-focus.png</texturefocus>
+                    <texturenofocus colordiffuse="99FFFFFF">script.plex/buttons/search.png</texturenofocus>
+                    <onup>100</onup>
+                    <ondown>100</ondown>
+                    <onleft>150</onleft>
+                    <onright>152</onright>
+                    <animation effect="zoom" start="100" end="120" time="150" center="35,35" reversible="false">Focus</animation>
+                    <animation effect="zoom" start="120" end="100" time="150" center="35,35" reversible="false">UnFocus</animation>
+                </control>
+                
+                <!-- Botón de usuario -->
+                <control type="button" id="152">
+                    <posx>190</posx>
+                    <posy>0</posy>
+                    <width>70</width>
+                    <height>70</height>
+                    <texturefocus colordiffuse="FFE5A00D">script.plex/buttons/user-focus.png</texturefocus>
+                    <texturenofocus colordiffuse="99FFFFFF">script.plex/buttons/user.png</texturenofocus>
+                    <onup>100</onup>
+                    <ondown>100</ondown>
+                    <onleft>151</onleft>
+                    <onright>200</onright>
+                    <animation effect="zoom" start="100" end="120" time="150" center="35,35" reversible="false">Focus</animation>
+                    <animation effect="zoom" start="120" end="100" time="150" center="35,35" reversible="false">UnFocus</animation>
+                </control>
+            </control>
+        </control>
+        
+        <!-- Panel de contenido principal (derecha) -->
+        <control type="group">
+            <posx>460</posx>
+            <posy>80</posy>
+            <width>1420</width>
+            <height>920</height>
+            <visible>Integer.IsGreater(Container(200).NumItems,0)</visible>
+            
+            <!-- Título de la sección -->
+            <control type="label">
+                <posx>20</posx>
+                <posy>20</posy>
+                <width>1380</width>
+                <height>60</height>
+                <font>font30_title</font>
+                <textcolor>FFFFFFFF</textcolor>
+                <label>$INFO[Container(100).ListItem.Label]</label>
+                <shadowcolor>88000000</shadowcolor>
+            </control>
+            
+            <!-- Lista vertical de contenido -->
+            <control type="list" id="200">
+                <posx>0</posx>
+                <posy>100</posy>
+                <width>1420</width>
+                <height>800</height>
+                <onup>200</onup>
+                <ondown>200</ondown>
+                <onleft>100</onleft>
+                <onright>100</onright>
+                <orientation>vertical</orientation>
+                <scrolltime tween="cubic" easing="out">400</scrolltime>
+                <pagecontrol>125</pagecontrol>
+                
+                <itemlayout height="160" width="1380">
+                    <control type="group">
+                        <!-- Fondo del item -->
+                        <control type="image">
+                            <posx>10</posx>
+                            <posy>5</posy>
+                            <width>1360</width>
+                            <height>150</height>
+                            <texture border="15">script.plex/white-square-rounded.png</texture>
+                            <colordiffuse>FF202020</colordiffuse>
+                        </control>
+                        
+                        <!-- Miniatura -->
+                        <control type="image">
+                            <posx>25</posx>
+                            <posy>20</posy>
+                            <width>200</width>
+                            <height>120</height>
+                            <texture>$INFO[ListItem.Thumb]</texture>
+                            <aspectratio>scale</aspectratio>
+                        </control>
+                        
+                        <!-- Información del contenido -->
+                        <control type="group">
+                            <posx>245</posx>
+                            <posy>20</posy>
+                            <width>1090</width>
+                            <height>120</height>
+                            
+                            <!-- Título -->
+                            <control type="label">
+                                <posx>0</posx>
+                                <posy>10</posy>
+                                <width>1000</width>
+                                <height>35</height>
+                                <font>font16_title</font>
+                                <textcolor>FFEEEEEE</textcolor>
+                                <label>$INFO[ListItem.Label]</label>
+                            </control>
+                            
+                            <!-- Subtítulo / Info -->
+                            <control type="label">
+                                <posx>0</posx>
+                                <posy>50</posy>
+                                <width>1000</width>
+                                <height>25</height>
+                                <font>font12</font>
+                                <textcolor>FF999999</textcolor>
+                                <label>$INFO[ListItem.Label2]</label>
+                            </control>
+                            
+                            <!-- Descripción -->
+                            <control type="textbox">
+                                <posx>0</posx>
+                                <posy>78</posy>
+                                <width>1000</width>
+                                <height>40</height>
+                                <font>font11</font>
+                                <textcolor>FF777777</textcolor>
+                                <label>$INFO[ListItem.Property(plot)]</label>
+                            </control>
+                        </control>
+                        
+                        <!-- Indicador de progreso -->
+                        <control type="progress">
+                            <posx>25</posx>
+                            <posy>137</posy>
+                            <width>200</width>
+                            <height>6</height>
+                            <info>ListItem.Property(percentplayed)</info>
+                            <texturebg colordiffuse="33FFFFFF">script.plex/white-square.png</texturebg>
+                            <lefttexture>-</lefttexture>
+                            <midtexture colordiffuse="FFCC7B19">script.plex/white-square.png</midtexture>
+                            <righttexture>-</righttexture>
+                            <visible>Integer.IsGreater(ListItem.Property(percentplayed),0)</visible>
+                        </control>
+                        
+                        <!-- Indicador de no visto -->
+                        <control type="image">
+                            <posx>1300</posx>
+                            <posy>25</posy>
+                            <width>40</width>
+                            <height>40</height>
+                            <texture>script.plex/indicators/unwatched.png</texture>
+                            <visible>String.IsEmpty(ListItem.Overlay)</visible>
+                        </control>
+                    </control>
+                </itemlayout>
+                
+                <focusedlayout height="160" width="1380">
+                    <control type="group">
+                        <!-- Fondo del item enfocado -->
+                        <control type="image">
+                            <posx>10</posx>
+                            <posy>5</posy>
+                            <width>1360</width>
+                            <height>150</height>
+                            <texture border="15">script.plex/white-square-rounded.png</texture>
+                            <colordiffuse>FF2A2A2A</colordiffuse>
+                            <animation effect="zoom" start="100" end="102" time="200" center="680,75" reversible="true">Focus</animation>
+                        </control>
+                        
+                        <!-- Borde superior brillante -->
+                        <control type="image">
+                            <posx>10</posx>
+                            <posy>5</posy>
+                            <width>1360</width>
+                            <height>4</height>
+                            <texture>script.plex/white-square.png</texture>
+                            <colordiffuse>FFE5A00D</colordiffuse>
+                        </control>
+                        
+                        <!-- Miniatura -->
+                        <control type="image">
+                            <posx>25</posx>
+                            <posy>20</posy>
+                            <width>200</width>
+                            <height>120</height>
+                            <texture>$INFO[ListItem.Thumb]</texture>
+                            <aspectratio>scale</aspectratio>
+                            <bordertexture border="2" colordiffuse="FFE5A00D">script.plex/white-square.png</bordertexture>
+                            <bordersize>2</bordersize>
+                        </control>
+                        
+                        <!-- Información del contenido -->
+                        <control type="group">
+                            <posx>245</posx>
+                            <posy>20</posy>
+                            <width>1090</width>
+                            <height>120</height>
+                            
+                            <!-- Título enfocado -->
+                            <control type="label">
+                                <posx>0</posx>
+                                <posy>10</posy>
+                                <width>1000</width>
+                                <height>35</height>
+                                <font>font16_title</font>
+                                <textcolor>FFFFFFFF</textcolor>
+                                <label>$INFO[ListItem.Label]</label>
+                                <shadowcolor>66000000</shadowcolor>
+                            </control>
+                            
+                            <!-- Subtítulo / Info -->
+                            <control type="label">
+                                <posx>0</posx>
+                                <posy>50</posy>
+                                <width>1000</width>
+                                <height>25</height>
+                                <font>font12</font>
+                                <textcolor>FFBBBBBB</textcolor>
+                                <label>$INFO[ListItem.Label2]</label>
+                            </control>
+                            
+                            <!-- Descripción -->
+                            <control type="textbox">
+                                <posx>0</posx>
+                                <posy>78</posy>
+                                <width>1000</width>
+                                <height>40</height>
+                                <font>font11</font>
+                                <textcolor>FF999999</textcolor>
+                                <label>$INFO[ListItem.Property(plot)]</label>
+                            </control>
+                        </control>
+                        
+                        <!-- Indicador de progreso -->
+                        <control type="progress">
+                            <posx>25</posx>
+                            <posy>137</posy>
+                            <width>200</width>
+                            <height>6</height>
+                            <info>ListItem.Property(percentplayed)</info>
+                            <texturebg colordiffuse="33FFFFFF">script.plex/white-square.png</texturebg>
+                            <lefttexture>-</lefttexture>
+                            <midtexture colordiffuse="FFCC7B19">script.plex/white-square.png</midtexture>
+                            <righttexture>-</righttexture>
+                            <visible>Integer.IsGreater(ListItem.Property(percentplayed),0)</visible>
+                        </control>
+                        
+                        <!-- Indicador de no visto -->
+                        <control type="image">
+                            <posx>1300</posx>
+                            <posy>25</posy>
+                            <width>40</width>
+                            <height>40</height>
+                            <texture>script.plex/indicators/unwatched.png</texture>
+                            <visible>String.IsEmpty(ListItem.Overlay)</visible>
+                            <animation effect="zoom" start="100" end="110" time="150" center="20,20" reversible="true">Focus</animation>
+                        </control>
+                        
+                        <!-- Botón de reproducción flotante -->
+                        <control type="image">
+                            <posx>1240</posx>
+                            <posy>55</posy>
+                            <width>80</width>
+                            <height>80</height>
+                            <texture colordiffuse="FFE5A00D">script.plex/buttons/play-focus.png</texture>
+                            <animation effect="fade" start="0" end="100" time="300" delay="200">Focus</animation>
+                            <animation effect="zoom" start="80" end="100" time="300" delay="200" center="40,40">Focus</animation>
+                        </control>
+                    </control>
+                </focusedlayout>
+            </control>
+            
+            <!-- Scrollbar vertical -->
+            <control type="scrollbar" id="125">
+                <posx>1400</posx>
+                <posy>100</posy>
+                <width>12</width>
+                <height>800</height>
+                <texturesliderbackground colordiffuse="33FFFFFF" border="4">script.plex/white-square-rounded-4r.png</texturesliderbackground>
+                <texturesliderbar colordiffuse="66FFFFFF" border="4">script.plex/white-square-rounded-4r.png</texturesliderbar>
+                <texturesliderbarfocus colordiffuse="FFE5A00D" border="4">script.plex/white-square-rounded-4r.png</texturesliderbarfocus>
+                <textureslidernib>-</textureslidernib>
+                <textureslidernibfocus>-</textureslidernibfocus>
+                <orientation>vertical</orientation>
+                <showonepage>false</showonepage>
+                <visible>Integer.IsGreater(Container(200).NumItems,5)</visible>
+            </control>
+        </control>
+        
+        <!-- Overlay de información del servidor -->
+        <control type="group">
+            <posx>1700</posx>
+            <posy>20</posy>
+            <width>200</width>
+            <height>50</height>
+            
+            <control type="label">
+                <posx>0</posx>
+                <posy>0</posy>
+                <width>200</width>
+                <height>50</height>
+                <align>right</align>
+                <aligny>center</aligny>
+                <font>font12</font>
+                <textcolor>FF666666</textcolor>
+                <label>$INFO[Window.Property(server.name)]</label>
+            </control>
+        </control>
+    </controls>
+</window>

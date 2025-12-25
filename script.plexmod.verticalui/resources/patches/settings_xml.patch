@@ -1,0 +1,7 @@
+                <!-- ==================== VERTICAL UI SETTING ==================== -->
+                <setting id="use_vertical_ui" type="boolean" label="Usar interfaz vertical" help="Cambia la navegación de horizontal a vertical">
+                    <level>0</level>
+                    <default>false</default>
+                    <control type="toggle"/>
+                </setting>
+                <!-- ============================================================= -->
